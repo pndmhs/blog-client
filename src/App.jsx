@@ -1,10 +1,11 @@
-import "./App.css";
+import Header from "./components/Header";
+import "@fontsource-variable/inter";
 
 function App() {
   return (
-    <div>
-      <h1>Blog</h1>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
