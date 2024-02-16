@@ -21,10 +21,10 @@ const posts = [
 const PostsList = () => {
   return (
     <main className="w-full px-5">
-      <div className="w-full max-w-[820px] mx-auto">
-        <h2 className="text-4xl font-semibold mt-8">Posts</h2>
-        <p className="text-yellow-900 mb-6">3 Posts</p>
-        <div className="flex flex-col gap-8">
+      <div className="w-full max-w-[820px] mx-auto py-8">
+        <h2 className="text-4xl font-semibold">Posts</h2>
+        <p className="text-yellow-900 mb-11">3 Posts</p>
+        <div className="flex flex-col gap-11">
           {posts.map((post, index) => (
             <PostItem
               key={index}
