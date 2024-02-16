@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         inter: "Inter, sans-serif",
-        lora: "Lora, serif",
+        merriweather: "Merriweather, serif",
       },
     },
   },
