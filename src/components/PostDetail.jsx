@@ -1,4 +1,5 @@
 import CommentLists from "./CommentsList";
+import CommentForm from "./CommentForm";
 
 const text = `Astrophotography opens a portal to the vast and awe-inspiring cosmos, allowing us to capture the beauty of distant galaxies and celestial bodies. To embark on this journey, start by investing in a sturdy tripod and a DSLR or mirrorless camera with manual settings. Understanding the importance of location and timing is crucial; choose a dark sky area, away from city lights, and shoot during the new moon phase for optimal conditions.
 
@@ -26,6 +27,7 @@ const PostDetail = () => {
         </div>
         <hr />
         <CommentLists />
+        <CommentForm />
       </div>
     </main>
   );
