@@ -1,14 +1,13 @@
-import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({});
+  const { login, error } = useContext(AuthContext);
 
   const navigate = useNavigate();
-
-  const { setUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,17 +15,12 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/users/auth",
-        formData
-      );
-      localStorage.setItem("user", JSON.stringify(response.data));
-      setUser(localStorage.getItem("user"));
-      navigate("/");
-    } catch (err) {
-      console.log(err);
+    login(formData);
+    if (error) {
+      console.log(error);
+      return;
     }
+    navigate("/");
   };
 
   return (
