@@ -4,11 +4,16 @@ import PostItem from "./PostItem";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { DateTime } from "luxon";
 
 const PostsList = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const formatDate = (date) => {
+    return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
+  };
 
   const { authed } = useContext(AuthContext);
 
@@ -50,7 +55,8 @@ const PostsList = () => {
                   key={index}
                   title={post.title}
                   text={post.text}
-                  date={post.timestamp}
+                  date={formatDate(post.created_at)}
+                  id={post._id}
                 />
               ))}
             </div>
