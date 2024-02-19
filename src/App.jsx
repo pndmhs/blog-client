@@ -8,6 +8,7 @@ import LoginForm from "./components/LoginForm";
 import { AuthProvider } from "./context/AuthContext";
 import NewPost from "./components/NewPost";
 import RequireAuth from "./components/RequireAuth";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>
   );
