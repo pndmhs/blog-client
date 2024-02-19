@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({});
-  const { login, error } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -15,12 +15,12 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    login(formData);
-    if (error) {
-      console.log(error);
-      return;
+    try {
+      await login(formData);
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
     }
-    navigate("/");
   };
 
   return (
