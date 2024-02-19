@@ -7,6 +7,7 @@ import PostDetail from "./components/PostDetail";
 import LoginForm from "./components/LoginForm";
 import { AuthProvider } from "./context/AuthContext";
 import NewPost from "./components/NewPost";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
         <Route path="/" element={<PostsList />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/posts/:post_id" element={<PostDetail />} />
-        <Route path="/posts/new" element={<NewPost />} />
+        <Route
+          path="/posts/new"
+          element={
+            <RequireAuth>
+              <NewPost />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </AuthProvider>
   );
