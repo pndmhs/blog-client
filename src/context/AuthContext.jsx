@@ -6,7 +6,6 @@ export const AuthContext = createContext();
 const useAuth = () => {
   const user = localStorage.getItem("user");
   const [authed, setAuthed] = useState(user ? true : false);
-  const [error, setError] = useState(null);
 
   const login = async (loginData) => {
     try {
@@ -15,10 +14,9 @@ const useAuth = () => {
         loginData
       );
       localStorage.setItem("user", JSON.stringify(response.data));
-      setError(null);
       setAuthed(true);
     } catch (err) {
-      setError(err);
+      throw new Error(err);
     }
   };
 
@@ -31,7 +29,6 @@ const useAuth = () => {
     authed,
     login,
     logout,
-    error,
   };
 };
 
