@@ -1,14 +1,9 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
-  const { user, setUser } = useContext(UserContext);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-  };
+  const { authed, logout } = useContext(AuthContext);
 
   return (
     <header className="w-full flex items-center py-4 lg:py-6 px-5">
@@ -17,11 +12,8 @@ const Header = () => {
           <Link to="/">Simple Blog</Link>
         </h1>
         <nav>
-          {user ? (
-            <button
-              className="font-medium cursor-pointer"
-              onClick={handleLogout}
-            >
+          {authed ? (
+            <button className="font-medium cursor-pointer" onClick={logout}>
               Log Out
             </button>
           ) : (
