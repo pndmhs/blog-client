@@ -6,6 +6,7 @@ import PostsList from "./components/PostsList";
 import PostDetail from "./components/PostDetail";
 import LoginForm from "./components/LoginForm";
 import { UserProvider } from "./context/UserContext";
+import NewPost from "./components/NewPost";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<PostsList />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/posts/:post_id" element={<PostDetail />} />
+        <Route path="/posts/new" element={<NewPost />} />
       </Routes>
     </UserProvider>
   );
