@@ -5,12 +5,12 @@ import "@fontsource/merriweather";
 import PostsList from "./components/PostsList";
 import PostDetail from "./components/PostDetail";
 import LoginForm from "./components/LoginForm";
-import { UserProvider } from "./context/UserContext";
+import { AuthProvider } from "./context/AuthContext";
 import NewPost from "./components/NewPost";
 
 function App() {
   return (
-    <UserProvider>
+    <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<PostsList />} />
@@ -18,7 +18,7 @@ function App() {
         <Route path="/posts/:post_id" element={<PostDetail />} />
         <Route path="/posts/new" element={<NewPost />} />
       </Routes>
-    </UserProvider>
+    </AuthProvider>
   );
 }
 
