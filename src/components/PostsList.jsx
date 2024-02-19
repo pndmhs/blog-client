@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PostItem from "./PostItem";
 import axios from "axios";
 
@@ -26,7 +27,12 @@ const PostsList = () => {
   return (
     <main className="w-full px-5">
       <div className="w-full max-w-[820px] mx-auto py-8">
-        <h2 className="text-4xl font-semibold">Posts</h2>
+        <div className="flex items-center">
+          <h2 className="text-4xl font-semibold">Posts</h2>
+          <Link to="/posts/new" className="ml-auto">
+            + New Post
+          </Link>
+        </div>
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {data && (
