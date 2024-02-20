@@ -37,6 +37,7 @@ const LoginForm = () => {
               placeholder="Username"
               className="bg-neutral-100 border border-neutral-400 py-3 px-4 outline-none focus:bg-white focus:border-gray-900 rounded-lg"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -47,6 +48,7 @@ const LoginForm = () => {
               placeholder="Password"
               className="bg-neutral-100 border border-neutral-400 py-3 px-4 outline-none focus:bg-white focus:border-gray-900 rounded-lg"
               onChange={handleChange}
+              required
             />
           </div>
           <button

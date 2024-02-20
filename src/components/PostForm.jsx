@@ -42,6 +42,7 @@ const NewPost = () => {
               name="title"
               className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -52,6 +53,7 @@ const NewPost = () => {
               rows="10"
               className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
               onChange={handleChange}
+              required
             ></textarea>
           </div>
           <button
