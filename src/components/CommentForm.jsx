@@ -1,8 +1,33 @@
-const CommentForm = () => {
+import axios from "axios";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+const CommentForm = ({ comments, setComments }) => {
+  const [formData, setFormData] = useState(null);
+
+  const { post_id } = useParams();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/posts/${post_id}/comments`,
+        formData
+      );
+      setComments([...comments, response.data]);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <div className="py-8">
       <h3 className="text-2xl font-semibold">Leave a comment</h3>
-      <form action="#" method="post" className="mt-8 flex flex-col gap-5">
+      <form className="mt-8 flex flex-col gap-5" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
           <label htmlFor="username" className="font-medium">
             Name
@@ -13,6 +38,8 @@ const CommentForm = () => {
             name="username"
             id="username"
             className="border border-neutral-400 w-72 max-w-full py-2 px-3 outline-none focus:border-black"
+            onChange={handleChange}
+            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -26,6 +53,8 @@ const CommentForm = () => {
             cols="30"
             rows="10"
             className="border border-neutral-400 resize-none py-2 px-3 outline-none focus:border-black"
+            onChange={handleChange}
+            required
           ></textarea>
         </div>
         <button
