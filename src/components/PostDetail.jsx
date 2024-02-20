@@ -1,9 +1,8 @@
-import CommentLists from "./CommentsList";
-import CommentForm from "./CommentForm";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { DateTime } from "luxon";
+import Comments from "./Comments";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -52,8 +51,7 @@ const PostDetail = () => {
                 ))}
             </div>
             <hr />
-            <CommentLists />
-            <CommentForm />
+            <Comments />
           </>
         )}
       </div>
