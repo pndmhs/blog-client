@@ -1,11 +1,14 @@
 import axios from "axios";
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 const useAuth = () => {
   const user = localStorage.getItem("user");
   const [authed, setAuthed] = useState(user ? true : false);
+
+  const navigate = useNavigate();
 
   const login = async (loginData) => {
     try {
@@ -23,6 +26,7 @@ const useAuth = () => {
   const logout = () => {
     localStorage.removeItem("user");
     setAuthed(false);
+    navigate("/");
   };
 
   return {
