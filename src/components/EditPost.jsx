@@ -4,7 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditPost = () => {
-  const [formData, setFormData] = useState(null);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,7 +15,8 @@ const EditPost = () => {
         const response = await axios.get(
           `http://localhost:3000/posts/${post_id}`
         );
-        setFormData({ title: response.data.title, text: response.data.text });
+        setTitle(response.data.title);
+        setText(response.data.text);
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -30,8 +32,12 @@ const EditPost = () => {
 
   const { post_id } = useParams();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -40,7 +46,7 @@ const EditPost = () => {
     try {
       const response = await axios.put(
         `http://localhost:3000/posts/${post_id}`,
-        formData,
+        { title, text },
         {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
@@ -59,10 +65,12 @@ const EditPost = () => {
         <h2 className="text-4xl font-semibold mb-7">Edit Post</h2>
         {loading && <p>Loading post data...</p>}
         {error && <p>{error}</p>}
-        {formData && (
+        {title && (
           <PostForm
-            data={formData}
-            handleChange={handleChange}
+            title={title}
+            text={text}
+            handleTitleChange={handleTitleChange}
+            handleTextChange={handleTextChange}
             handleSubmit={handleSubmit}
           />
         )}
