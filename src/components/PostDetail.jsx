@@ -7,6 +7,8 @@ import EditIcon from "../assets/edit.svg?react";
 import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
 import { AuthContext } from "../context/AuthContext";
+import PublishModal from "./PublishModal";
+import PublishIcon from "../assets/send.svg?react";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -14,6 +16,7 @@ const PostDetail = () => {
   const [loading, setLoading] = useState(true);
 
   const [deleteModal, setDeleteModal] = useState(false);
+  const [publishModal, setPublishModal] = useState(false);
 
   const { post_id } = useParams();
 
@@ -35,7 +38,7 @@ const PostDetail = () => {
       }
     };
     getPost();
-  }, []);
+  }, [authed]);
 
   const formatDate = (date) => {
     return DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED);
@@ -45,6 +48,10 @@ const PostDetail = () => {
     setDeleteModal(!deleteModal);
   };
 
+  const handlePublishToggle = () => {
+    setPublishModal(!deleteModal);
+  };
+
   return (
     <main className="w-full px-5">
       <div className="w-full max-w-[820px] mx-auto py-8">
@@ -52,19 +59,28 @@ const PostDetail = () => {
         {error && <h2 className="font-semibold text-3xl">{error}</h2>}
         {data && (
           <>
-            <h2 className="font-semibold text-3xl mb-2">{data.title}</h2>
+            <h2 className="font-semibold text-3xl mb-2">
+              {data.title} {!data.published && "(Not Published)"}
+            </h2>
             <p className="text-yellow-900">{formatDate(data.created_at)}</p>
             {authed && (
               <div className="flex gap-4 mt-3">
+                <button
+                  className="flex gap-2 px-3 py-2 text-white bg-gray-900 cursor-pointer rounded-md"
+                  onClick={handlePublishToggle}
+                >
+                  <PublishIcon />
+                  Publish Post
+                </button>
                 <Link
                   to={`/posts/${post_id}/edit`}
-                  className="flex gap-1 px-2 py-1 text-white bg-gray-900 rounded-md"
+                  className="flex gap-2 px-3 py-2 text-white bg-gray-900 rounded-md"
                 >
                   <EditIcon />
                   Edit Post
                 </Link>
                 <button
-                  className="flex gap-1 px-2 py-1 text-white bg-red-700 cursor-pointer rounded-md"
+                  className="flex gap-2 px-3 py-2 text-white bg-red-700 cursor-pointer rounded-md"
                   onClick={handleDeleteToggle}
                 >
                   <DeleteIcon />
@@ -91,6 +107,14 @@ const PostDetail = () => {
           post_id={post_id}
           closeModal={() => {
             setDeleteModal(false);
+          }}
+        />
+      )}
+      {publishModal && (
+        <PublishModal
+          postData={data}
+          closeModal={() => {
+            setPublishModal(false);
           }}
         />
       )}
