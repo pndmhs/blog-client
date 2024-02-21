@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import NewPost from "./components/NewPost";
 import RequireAuth from "./components/RequireAuth";
 import NotFound from "./components/NotFound";
+import EditPost from "./components/EditPost";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
           element={
             <RequireAuth>
               <NewPost />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/posts/:post_id/edit"
+          element={
+            <RequireAuth>
+              <EditPost />
             </RequireAuth>
           }
         />
