@@ -6,7 +6,7 @@ import PostsList from "./components/PostsList";
 import PostDetail from "./components/PostDetail";
 import LoginForm from "./components/LoginForm";
 import { AuthProvider } from "./context/AuthContext";
-import PostForm from "./components/PostForm";
+import NewPost from "./components/NewPost";
 import RequireAuth from "./components/RequireAuth";
 import NotFound from "./components/NotFound";
 
@@ -22,7 +22,7 @@ function App() {
           path="/posts/new"
           element={
             <RequireAuth>
-              <PostForm />
+              <NewPost />
             </RequireAuth>
           }
         />
