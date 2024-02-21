@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const NewPost = () => {
-  const [formData, setFormData] = useState();
+const PostForm = () => {
+  const [formData, setFormData] = useState(null);
 
   const navigate = useNavigate();
 
@@ -68,4 +68,4 @@ const NewPost = () => {
   );
 };
 
-export default NewPost;
+export default PostForm;
