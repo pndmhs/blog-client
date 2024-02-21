@@ -98,7 +98,7 @@ const PostDetail = () => {
                 ))}
             </div>
             <hr />
-            <Comments />
+            {data.published && <Comments />}
           </>
         )}
       </div>
