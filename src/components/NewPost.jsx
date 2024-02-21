@@ -4,12 +4,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NewPost = () => {
-  const [formData, setFormData] = useState(null);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -18,7 +23,7 @@ const NewPost = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/posts/",
-        formData,
+        { title, text },
         {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
@@ -35,7 +40,13 @@ const NewPost = () => {
     <main className="w-full px-5">
       <div className="w-full max-w-[820px] mx-auto py-8">
         <h2 className="text-4xl font-semibold mb-7">Add New Post</h2>
-        <PostForm handleChange={handleChange} handleSubmit={handleSubmit} />
+        <PostForm
+          title={title}
+          text={text}
+          handleTitleChange={handleTitleChange}
+          handleTextChange={handleTextChange}
+          handleSubmit={handleSubmit}
+        />
       </div>
     </main>
   );
