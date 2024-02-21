@@ -1,4 +1,4 @@
-const PostForm = ({ handleChange, handleSubmit }) => {
+const PostForm = ({ handleChange, handleSubmit, data = null }) => {
   return (
     <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1">
@@ -9,6 +9,7 @@ const PostForm = ({ handleChange, handleSubmit }) => {
           className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
           onChange={handleChange}
           required
+          value={data ? data.title : ""}
         />
       </div>
       <div className="flex flex-col gap-1">
@@ -20,6 +21,7 @@ const PostForm = ({ handleChange, handleSubmit }) => {
           className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
           onChange={handleChange}
           required
+          value={data ? data.text : ""}
         ></textarea>
       </div>
       <button
