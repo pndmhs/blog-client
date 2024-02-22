@@ -8,7 +8,7 @@ import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
 import { AuthContext } from "../context/AuthContext";
 import PublishModal from "./PublishModal";
-import PublishIcon from "../assets/publish.svg?react";
+import PublishButton from "./PublishButton";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -65,13 +65,10 @@ const PostDetail = () => {
             <p className="text-yellow-900">{formatDate(data.created_at)}</p>
             {authed && (
               <div className="flex gap-4 mt-3">
-                <button
-                  className="flex gap-2 px-3 py-2 text-white bg-gray-900 cursor-pointer rounded-md"
-                  onClick={handlePublishToggle}
-                >
-                  <PublishIcon />
-                  Publish Post
-                </button>
+                <PublishButton
+                  published={data.published}
+                  handlePublishToggle={handlePublishToggle}
+                />
                 <Link
                   to={`/posts/${post_id}/edit`}
                   className="flex gap-2 px-3 py-2 text-white bg-gray-900 rounded-md"
