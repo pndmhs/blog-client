@@ -12,7 +12,7 @@ const PublishModal = ({ postData, closeModal }) => {
         {
           title: postData.title,
           text: postData.text,
-          published: true,
+          published: !postData.published,
         },
         {
           headers: {
@@ -30,14 +30,15 @@ const PublishModal = ({ postData, closeModal }) => {
     <div className="absolute left-0 top-0 bg-gray-900/45 w-full h-full flex justify-center items-center">
       <div className="px-8 py-6 w-full max-w-fit bg-white flex flex-col items-center gap-6 rounded-md">
         <h3 className="text-2xl font-semibold">
-          Are you sure you want to publish this post?
+          Are you sure you want to{" "}
+          {postData.published ? "unpublish" : "publish"} this post?
         </h3>
         <div className="flex gap-8">
           <button
             className="px-4 py-2 bg-gray-900 text-white cursor-pointer rounded-md"
             onClick={handlePublish}
           >
-            Publish
+            {postData.published ? "Unpublish" : "Publish"}
           </button>
           <button
             className="px-4 py-2 border border-gray-900 cursor-pointer rounded-md"
