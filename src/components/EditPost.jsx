@@ -49,7 +49,12 @@ const EditPost = () => {
     try {
       const response = await axios.put(
         `http://localhost:3000/posts/${post_id}`,
-        { title: he.decode(title), text: he.decode(text), published },
+        {
+          title: he.decode(title),
+          text: he.decode(text),
+          modified_at: Date.now(),
+          published,
+        },
         {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
