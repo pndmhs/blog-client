@@ -59,7 +59,10 @@ const PostDetail = () => {
             <h2 className="font-semibold text-3xl mb-2">
               {he.decode(data.title)} {!data.published && "(Not Published)"}
             </h2>
-            <p className="text-yellow-900">{formatDate(data.created_at)}</p>
+            <p className="text-yellow-900">
+              {formatDate(data.created_at)} | (Edited at{" "}
+              {formatDate(data.modified_at)})
+            </p>
             {authed && (
               <div className="flex gap-4 mt-3">
                 <PublishButton
