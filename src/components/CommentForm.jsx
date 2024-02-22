@@ -59,7 +59,7 @@ const CommentForm = ({ comments, setComments }) => {
         </div>
         <button
           type="submit"
-          className="self-start font-medium py-2 px-4 bg-gray-900 text-white cursor-pointer hover:bg-white hover:text-gray-900 hover:border hover:border-gray-900"
+          className="self-start font-medium py-2 px-4 bg-gray-900 text-white cursor-pointer hover:bg-gray-800 rounded-md"
         >
           Submit
         </button>
