@@ -8,7 +8,7 @@ import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
 import { AuthContext } from "../context/AuthContext";
 import PublishModal from "./PublishModal";
-import PublishIcon from "../assets/send.svg?react";
+import PublishIcon from "../assets/publish.svg?react";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
