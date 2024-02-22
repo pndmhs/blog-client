@@ -6,7 +6,7 @@ const CommentItem = ({ name, timestamp, text }) => {
   };
 
   return (
-    <div className="py-4 px-5 border border-solid border-neutral-400">
+    <div className="py-4 px-5 border border-solid border-neutral-400 rounded-md">
       <h4 className="font-medium text-lg">{name}</h4>
       <p className="text-yellow-900 text-sm">{formatDate(timestamp)}</p>
       <p className="mt-3">{text}</p>

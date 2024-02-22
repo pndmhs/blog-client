@@ -37,7 +37,7 @@ const CommentForm = ({ comments, setComments }) => {
             type="text"
             name="username"
             id="username"
-            className="border border-neutral-400 w-72 max-w-full py-2 px-3 outline-none focus:border-black"
+            className="border border-neutral-400 w-72 max-w-full py-2 px-3 outline-none focus:border-black rounded-md"
             onChange={handleChange}
             required
           />
@@ -52,7 +52,7 @@ const CommentForm = ({ comments, setComments }) => {
             id="text"
             cols="30"
             rows="10"
-            className="border border-neutral-400 resize-none py-2 px-3 outline-none focus:border-black"
+            className="border border-neutral-400 resize-none py-2 px-3 outline-none focus:border-black rounded-md"
             onChange={handleChange}
             required
           ></textarea>
