@@ -4,7 +4,6 @@ import PostItem from "./PostItem";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { DateTime } from "luxon";
 
 const PostsList = () => {
   const [data, setData] = useState(null);
