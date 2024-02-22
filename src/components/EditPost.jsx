@@ -2,10 +2,12 @@ import PostForm from "./PostForm";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import he from "he";
 
 const EditPost = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [published, setPublished] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,8 +17,9 @@ const EditPost = () => {
         const response = await axios.get(
           `http://localhost:3000/posts/${post_id}`
         );
-        setTitle(response.data.title);
-        setText(response.data.text);
+        setTitle(he.decode(response.data.title));
+        setText(he.decode(response.data.text));
+        setPublished(response.data.published);
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -46,7 +49,7 @@ const EditPost = () => {
     try {
       const response = await axios.put(
         `http://localhost:3000/posts/${post_id}`,
-        { title, text },
+        { title: he.decode(title), text: he.decode(text), published },
         {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,

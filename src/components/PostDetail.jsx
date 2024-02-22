@@ -9,6 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 import PublishModal from "./PublishModal";
 import PublishButton from "./PublishButton";
 import DeletePostButton from "./DeletePostButton";
+import he from "he";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -56,7 +57,7 @@ const PostDetail = () => {
         {data && (
           <>
             <h2 className="font-semibold text-3xl mb-2">
-              {data.title} {!data.published && "(Not Published)"}
+              {he.decode(data.title)} {!data.published && "(Not Published)"}
             </h2>
             <p className="text-yellow-900">{formatDate(data.created_at)}</p>
             {authed && (
@@ -81,7 +82,7 @@ const PostDetail = () => {
                 .split("\n")
                 .filter((par) => par !== "")
                 .map((par, index) => (
-                  <p key={index}>{par}</p>
+                  <p key={index}>{he.decode(par)}</p>
                 ))}
             </div>
             <hr />

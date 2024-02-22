@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import he from "he";
 
 const PublishModal = ({ postData, closeModal }) => {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ const PublishModal = ({ postData, closeModal }) => {
       await axios.put(
         `http://localhost:3000/posts/${postData._id}`,
         {
-          title: postData.title,
-          text: postData.text,
+          title: he.decode(postData.title),
+          text: he.decode(postData.text),
           published: !postData.published,
         },
         {

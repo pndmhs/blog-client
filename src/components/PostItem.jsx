@@ -1,6 +1,7 @@
 import LinesEllipsis from "react-lines-ellipsis";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
+import he from "he";
 
 const PostItem = ({ data }) => {
   const formatDate = (date) => {
@@ -11,11 +12,11 @@ const PostItem = ({ data }) => {
     <div className="flex flex-col gap-2 cursor-pointer">
       <h3 className="font-semibold text-xl hover:underline">
         <Link to={`/posts/${data._id}`}>
-          {data.title} {!data.published && "(Not Published)"}
+          {he.decode(data.title)} {!data.published && "(Not Published)"}
         </Link>
       </h3>
       <LinesEllipsis
-        text={data.text}
+        text={he.decode(data.text)}
         maxLine="3"
         ellipsis="..."
         trimRight
