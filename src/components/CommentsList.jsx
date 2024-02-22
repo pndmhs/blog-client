@@ -1,6 +1,6 @@
 import CommentItem from "./CommentItem";
 
-const CommentsList = ({ comments, loading, error }) => {
+const CommentsList = ({ comments, loading, error, deleteComment }) => {
   return (
     <>
       {loading && (
@@ -20,9 +20,8 @@ const CommentsList = ({ comments, loading, error }) => {
             {comments.map((comment, index) => (
               <CommentItem
                 key={index}
-                name={comment.username}
-                timestamp={comment.timestamp}
-                text={comment.text}
+                data={comment}
+                deleteComment={deleteComment}
               />
             ))}
           </div>
