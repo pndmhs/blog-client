@@ -4,11 +4,11 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import Comments from "./Comments";
 import EditIcon from "../assets/edit.svg?react";
-import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
 import { AuthContext } from "../context/AuthContext";
 import PublishModal from "./PublishModal";
 import PublishButton from "./PublishButton";
+import DeletePostButton from "./DeletePostButton";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -44,10 +44,6 @@ const PostDetail = () => {
     return DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED);
   };
 
-  const handleDeleteToggle = () => {
-    setDeleteModal(!deleteModal);
-  };
-
   const handlePublishToggle = () => {
     setPublishModal(!deleteModal);
   };
@@ -76,13 +72,7 @@ const PostDetail = () => {
                   <EditIcon />
                   Edit Post
                 </Link>
-                <button
-                  className="flex gap-2 px-3 py-2 text-white bg-red-700 cursor-pointer rounded-md"
-                  onClick={handleDeleteToggle}
-                >
-                  <DeleteIcon />
-                  Delete Post
-                </button>
+                <DeletePostButton post_id={post_id} />
               </div>
             )}
 
