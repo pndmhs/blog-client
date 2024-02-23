@@ -27,7 +27,7 @@ const PostDetail = () => {
     const getPost = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/posts/${post_id}`
+          `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`
         );
         setData(response.data);
         setError(null);
@@ -60,8 +60,9 @@ const PostDetail = () => {
               {he.decode(data.title)} {!data.published && "(Not Published)"}
             </h2>
             <p className="text-yellow-900">
-              {formatDate(data.created_at)} | (Edited at{" "}
-              {formatDate(data.modified_at)})
+              {formatDate(data.created_at)}{" "}
+              {data.modified_at &&
+                `| Edited at ${formatDate(data.modified_at)}`}
             </p>
             {authed && (
               <div className="flex gap-4 mt-3">

@@ -22,7 +22,7 @@ const NewPost = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
       const response = await axios.post(
-        "http://localhost:3000/posts/",
+        "https://blog-api-pndmhs.koyeb.app/posts/",
         { title, text },
         {
           headers: {

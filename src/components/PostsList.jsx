@@ -15,7 +15,9 @@ const PostsList = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/posts`);
+        const response = await axios.get(
+          `https://blog-api-pndmhs.koyeb.app/posts`
+        );
         const publishedPosts = response.data.filter((post) => post.published);
         setData(authed ? response.data : publishedPosts);
         setError(null);

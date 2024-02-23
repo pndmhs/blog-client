@@ -12,7 +12,7 @@ const DeletePostButton = ({ post_id }) => {
   const deletePost = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
-      await axios.delete(`http://localhost:3000/posts/${post_id}`, {
+      await axios.delete(`https://blog-api-pndmhs.koyeb.app/posts/${post_id}`, {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },

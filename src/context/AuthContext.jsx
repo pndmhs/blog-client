@@ -13,7 +13,7 @@ const useAuth = () => {
   const login = async (loginData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/users/auth",
+        "https://blog-api-pndmhs.koyeb.app/users/auth",
         loginData
       );
       localStorage.setItem("user", JSON.stringify(response.data));

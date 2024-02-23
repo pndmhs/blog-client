@@ -15,7 +15,7 @@ const EditPost = () => {
     const getPost = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/posts/${post_id}`
+          `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`
         );
         setTitle(he.decode(response.data.title));
         setText(he.decode(response.data.text));
@@ -48,7 +48,7 @@ const EditPost = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
       const response = await axios.put(
-        `http://localhost:3000/posts/${post_id}`,
+        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`,
         {
           title: he.decode(title),
           text: he.decode(text),

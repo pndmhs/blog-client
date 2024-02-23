@@ -9,7 +9,7 @@ const PublishModal = ({ postData, closeModal }) => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
       await axios.put(
-        `http://localhost:3000/posts/${postData._id}`,
+        `https://blog-api-pndmhs.koyeb.app/posts/${postData._id}`,
         {
           title: he.decode(postData.title),
           text: he.decode(postData.text),

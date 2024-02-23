@@ -14,7 +14,7 @@ const Comments = () => {
   const getComments = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/posts/${post_id}/comments`
+        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments`
       );
       setComments(response.data);
       setError(null);
@@ -30,7 +30,7 @@ const Comments = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
       await axios.delete(
-        `http://localhost:3000/posts/${post_id}/comments/${comment_id}`,
+        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments/${comment_id}`,
         {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,

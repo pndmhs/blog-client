@@ -15,7 +15,7 @@ const CommentForm = ({ comments, setComments }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:3000/posts/${post_id}/comments`,
+        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments`,
         formData
       );
       setComments([...comments, response.data]);
