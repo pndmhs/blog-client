@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const CommentForm = ({ comments, setComments }) => {
-  const [formData, setFormData] = useState(null);
+  const defaultFormValue = { username: "", text: "" };
+  const [formData, setFormData] = useState(defaultFormValue);
 
   const { post_id } = useParams();
 
@@ -19,6 +20,7 @@ const CommentForm = ({ comments, setComments }) => {
         formData
       );
       setComments([...comments, response.data]);
+      setFormData(defaultFormValue);
     } catch (err) {
       console.log(err.message);
     }
@@ -38,6 +40,7 @@ const CommentForm = ({ comments, setComments }) => {
             id="username"
             className="border border-neutral-400 w-72 max-w-full py-2 px-3 outline-none focus:border-black rounded-md"
             onChange={handleChange}
+            value={formData.username}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -52,6 +55,7 @@ const CommentForm = ({ comments, setComments }) => {
             rows="10"
             className="border border-neutral-400 resize-none py-2 px-3 outline-none focus:border-black rounded-md"
             onChange={handleChange}
+            value={formData.text}
             required
           ></textarea>
         </div>
