@@ -14,7 +14,9 @@ const CommentItem = ({ data, deleteComment }) => {
   return (
     <div className="py-4 px-5 border border-solid border-neutral-400 rounded-md flex">
       <div className="mr-auto">
-        <h4 className="font-medium text-lg">{data.username}</h4>
+        <h4 className="font-medium text-lg">
+          {data.username ? data.username : "Anonymous"}
+        </h4>
         <p className="text-yellow-900 text-sm">{formatDate(data.timestamp)}</p>
         <p className="mt-3">{he.decode(data.text)}</p>
       </div>
