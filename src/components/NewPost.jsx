@@ -1,7 +1,7 @@
 import PostForm from "./PostForm";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { addPost } from "../api/api";
 
 const NewPost = () => {
   const [title, setTitle] = useState("");
@@ -19,18 +19,9 @@ const NewPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem("user"));
     try {
-      const response = await axios.post(
-        "https://blog-api-pndmhs.koyeb.app/posts/",
-        { title, text },
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      );
-      navigate(`/posts/${response.data._id}`);
+      const data = await addPost({ title, text });
+      navigate(`/posts/${data._id}`);
     } catch (err) {
       console.log(err);
     }

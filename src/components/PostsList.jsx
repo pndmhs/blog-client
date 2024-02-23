@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PostItem from "./PostItem";
-import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { fetchAllPost } from "../api/api";
 
 const PostsList = () => {
   const [data, setData] = useState(null);
@@ -15,11 +15,9 @@ const PostsList = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get(
-          `https://blog-api-pndmhs.koyeb.app/posts`
-        );
-        const publishedPosts = response.data.filter((post) => post.published);
-        setData(authed ? response.data : publishedPosts);
+        const allPosts = await fetchAllPost();
+        const publishedPosts = allPosts.filter((post) => post.published);
+        setData(authed ? allPosts : publishedPosts);
         setError(null);
       } catch (err) {
         setError(err.message);

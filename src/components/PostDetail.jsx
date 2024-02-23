@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import { DateTime } from "luxon";
 import Comments from "./Comments";
 import EditIcon from "../assets/edit.svg?react";
@@ -10,6 +9,7 @@ import PublishModal from "./PublishModal";
 import PublishButton from "./PublishButton";
 import DeletePostButton from "./DeletePostButton";
 import he from "he";
+import { fetchPost } from "../api/api";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
@@ -26,10 +26,8 @@ const PostDetail = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const response = await axios.get(
-          `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`
-        );
-        setData(response.data);
+        const data = await fetchPost(post_id);
+        setData(data);
         setError(null);
       } catch (err) {
         setError(err.message);

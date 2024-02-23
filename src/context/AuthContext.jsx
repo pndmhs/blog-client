@@ -1,6 +1,6 @@
-import axios from "axios";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authUser } from "../api/api";
 
 export const AuthContext = createContext();
 
@@ -12,14 +12,11 @@ const useAuth = () => {
 
   const login = async (loginData) => {
     try {
-      const response = await axios.post(
-        "https://blog-api-pndmhs.koyeb.app/users/auth",
-        loginData
-      );
-      localStorage.setItem("user", JSON.stringify(response.data));
+      const userData = await authUser(loginData);
+      localStorage.setItem("user", JSON.stringify(userData));
       setAuthed(true);
     } catch (err) {
-      throw new Error(err);
+      throw err;
     }
   };
 

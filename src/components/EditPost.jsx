@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import he from "he";
+import { updatePost } from "../api/api";
 
 const EditPost = () => {
   const [title, setTitle] = useState("");
@@ -47,21 +48,14 @@ const EditPost = () => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
     try {
-      const response = await axios.put(
-        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`,
-        {
-          title: he.decode(title),
-          text: he.decode(text),
-          modified_at: Date.now(),
-          published,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      );
-      navigate(`/posts/${response.data._id}`);
+      const newData = {
+        title: he.decode(title),
+        text: he.decode(text),
+        modified_at: Date.now(),
+        published,
+      };
+      const data = await updatePost(post_id, newData);
+      navigate(`/posts/${data._id}`);
     } catch (err) {
       console.log(err);
     }

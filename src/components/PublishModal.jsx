@@ -1,26 +1,18 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import he from "he";
+import { updatePost } from "../api/api";
 
 const PublishModal = ({ postData, closeModal }) => {
   const navigate = useNavigate();
 
   const handlePublish = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
     try {
-      await axios.put(
-        `https://blog-api-pndmhs.koyeb.app/posts/${postData._id}`,
-        {
-          title: he.decode(postData.title),
-          text: he.decode(postData.text),
-          published: !postData.published,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      );
+      const newData = {
+        title: he.decode(postData.title),
+        text: he.decode(postData.text),
+        published: !postData.published,
+      };
+      await updatePost(postData._id, newData);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -28,7 +20,7 @@ const PublishModal = ({ postData, closeModal }) => {
   };
 
   return (
-    <div className="absolute left-0 top-0 bg-gray-900/45 w-full h-full flex justify-center items-center">
+    <div className="fixed left-0 top-0 bg-gray-900/45 w-full h-full flex justify-center items-center">
       <div className="px-8 py-6 w-full max-w-fit bg-white flex flex-col items-center gap-6 rounded-md">
         <h3 className="text-2xl font-semibold">
           Are you sure you want to{" "}

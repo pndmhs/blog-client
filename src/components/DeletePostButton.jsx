@@ -2,21 +2,16 @@ import { useState } from "react";
 import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { deletePost } from "../api/api";
 
 const DeletePostButton = ({ post_id }) => {
   const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
-  const deletePost = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  const handleDelete = async () => {
     try {
-      await axios.delete(`https://blog-api-pndmhs.koyeb.app/posts/${post_id}`, {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`,
-        },
-      });
+      await deletePost(post_id);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -35,7 +30,7 @@ const DeletePostButton = ({ post_id }) => {
       {showModal && (
         <DeleteModal
           message="Are you sure you want to delete this post?"
-          onConfirm={deletePost}
+          onConfirm={handleDelete}
           closeModal={() => setShowModal(false)}
         />
       )}

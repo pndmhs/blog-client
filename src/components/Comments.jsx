@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentsList from "./CommentsList";
 import CommentForm from "./CommentForm";
-import axios from "axios";
+import { fetchAllComments, deleteComment } from "../api/api";
 
 const Comments = () => {
   const [comments, setComments] = useState(null);
@@ -13,10 +13,8 @@ const Comments = () => {
 
   const getComments = async () => {
     try {
-      const response = await axios.get(
-        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments`
-      );
-      setComments(response.data);
+      const data = await fetchAllComments(post_id);
+      setComments(data);
       setError(null);
     } catch (err) {
       setError(err.message);
@@ -26,17 +24,9 @@ const Comments = () => {
     }
   };
 
-  const deleteComment = async (comment_id) => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  const handleDelete = async (comment_id) => {
     try {
-      await axios.delete(
-        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments/${comment_id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      );
+      await deleteComment(post_id, comment_id);
       getComments();
     } catch (err) {
       console.log(err);
@@ -53,7 +43,7 @@ const Comments = () => {
         comments={comments}
         loading={loading}
         error={error}
-        deleteComment={deleteComment}
+        deleteComment={handleDelete}
       />
       <CommentForm comments={comments} setComments={setComments} />
     </>
