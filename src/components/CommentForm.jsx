@@ -31,7 +31,6 @@ const CommentForm = ({ comments, setComments }) => {
         <div className="flex flex-col gap-2">
           <label htmlFor="username" className="font-medium">
             Name
-            <span className="text-yellow-900"> *</span>
           </label>
           <input
             type="text"
@@ -39,7 +38,6 @@ const CommentForm = ({ comments, setComments }) => {
             id="username"
             className="border border-neutral-400 w-72 max-w-full py-2 px-3 outline-none focus:border-black rounded-md"
             onChange={handleChange}
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
