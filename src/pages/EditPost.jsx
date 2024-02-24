@@ -1,9 +1,10 @@
-import PostForm from "./PostForm";
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import he from "he";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
 import { updatePost } from "../api/api";
+import PostForm from "../components/PostForm";
 
 const EditPost = () => {
   const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ const EditPost = () => {
     const getPost = async () => {
       try {
         const response = await axios.get(
-          `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`
+          `https://blog-api-pndmhs.koyeb.app/posts/${post_id}`,
         );
         setTitle(he.decode(response.data.title));
         setText(he.decode(response.data.text));

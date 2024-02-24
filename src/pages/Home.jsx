@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import PostItem from "./PostItem";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+
 import { fetchAllPost } from "../api/api";
+import PostItem from "../components/PostItem";
+import { AuthContext } from "../context/AuthContext";
 
 const PostsList = () => {
   const [data, setData] = useState(null);

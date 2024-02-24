@@ -1,7 +1,8 @@
-import PostForm from "./PostForm";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { addPost } from "../api/api";
+import PostForm from "../components/PostForm";
 
 const NewPost = () => {
   const [title, setTitle] = useState("");

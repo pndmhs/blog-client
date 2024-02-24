@@ -1,15 +1,16 @@
+import he from "he";
+import { DateTime } from "luxon";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { DateTime } from "luxon";
-import Comments from "./Comments";
-import EditIcon from "../assets/edit.svg?react";
-import DeleteModal from "./DeleteModal";
-import { AuthContext } from "../context/AuthContext";
-import PublishModal from "./PublishModal";
-import PublishButton from "./PublishButton";
-import DeletePostButton from "./DeletePostButton";
-import he from "he";
+
 import { fetchPost } from "../api/api";
+import EditIcon from "../assets/edit.svg?react";
+import Comments from "../components/Comments";
+import DeleteModal from "../components/DeleteModal";
+import DeletePostButton from "../components/DeletePostButton";
+import PublishButton from "../components/PublishButton";
+import PublishModal from "../components/PublishModal";
+import { AuthContext } from "../context/AuthContext";
 
 const PostDetail = () => {
   const [data, setData] = useState(null);
