@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CommentsList from "./CommentsList";
+
+import { deleteComment, fetchAllComments } from "../api/api";
 import CommentForm from "./CommentForm";
-import { fetchAllComments, deleteComment } from "../api/api";
+import CommentsList from "./CommentsList";
 
 const Comments = () => {
   const [comments, setComments] = useState(null);

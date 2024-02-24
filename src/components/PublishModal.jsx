@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import he from "he";
+import { useNavigate } from "react-router-dom";
+
 import { updatePost } from "../api/api";
 
 const PublishModal = ({ postData, closeModal }) => {

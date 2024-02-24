@@ -1,15 +1,16 @@
-import Header from "./components/Header";
-import { Route, Routes } from "react-router-dom";
 import "@fontsource-variable/inter";
 import "@fontsource/merriweather";
-import PostsList from "./components/PostsList";
-import PostDetail from "./components/PostDetail";
-import LoginForm from "./components/LoginForm";
-import { AuthProvider } from "./context/AuthContext";
-import NewPost from "./components/NewPost";
+import { Route, Routes } from "react-router-dom";
+
+import Header from "./components/Header";
 import RequireAuth from "./components/RequireAuth";
-import NotFound from "./components/NotFound";
-import EditPost from "./components/EditPost";
+import { AuthProvider } from "./context/AuthContext";
+import EditPost from "./pages/EditPost";
+import PostsList from "./pages/Home";
+import LoginForm from "./pages/Login";
+import NewPost from "./pages/NewPost";
+import NotFound from "./pages/NotFound";
+import PostDetail from "./pages/PostDetail";
 
 function App() {
   return (

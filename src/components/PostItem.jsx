@@ -1,7 +1,7 @@
+import he from "he";
+import { DateTime } from "luxon";
 import LinesEllipsis from "react-lines-ellipsis";
 import { Link } from "react-router-dom";
-import { DateTime } from "luxon";
-import he from "he";
 
 const PostItem = ({ data }) => {
   const formatDate = (date) => {

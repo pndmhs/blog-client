@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { deletePost } from "../api/api";
 import DeleteIcon from "../assets/trash.svg?react";
 import DeleteModal from "./DeleteModal";
-import { useNavigate } from "react-router-dom";
-import { deletePost } from "../api/api";
 
 const DeletePostButton = ({ post_id }) => {
   const [showModal, setShowModal] = useState(false);
