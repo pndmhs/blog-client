@@ -12,7 +12,7 @@ const PostForm = ({
         <input
           type="text"
           name="title"
-          className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
+          className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black rounded-md"
           onChange={handleTitleChange}
           required
           value={title}
@@ -24,7 +24,7 @@ const PostForm = ({
           name="text"
           cols="30"
           rows="10"
-          className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black"
+          className="border border-neutral-400 max-w-full py-1 px-2 outline-none focus:border-black resize-none rounded-md"
           onChange={handleTextChange}
           required
           value={text}
@@ -32,7 +32,7 @@ const PostForm = ({
       </div>
       <button
         type="submit"
-        className="self-start font-medium py-2 px-4 bg-gray-900 text-white cursor-pointer hover:bg-white hover:text-gray-900 hover:border hover:border-gray-900"
+        className="self-start font-medium py-2 px-4 bg-gray-900 text-white cursor-pointer hover:bg-white hover:text-gray-900 hover:border hover:border-gray-900 rounded-md"
       >
         Submit
       </button>
