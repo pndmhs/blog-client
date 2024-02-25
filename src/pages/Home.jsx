@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { fetchAllPost } from "../api/api";
+import Loading from "../components/Loading";
 import PostItem from "../components/PostItem";
 import { AuthContext } from "../context/AuthContext";
 
@@ -41,7 +42,7 @@ const PostsList = () => {
             </Link>
           )}
         </div>
-        {loading && <p>Loading...</p>}
+        {loading && <Loading text="Loading posts" />}
         {error && <p>{error}</p>}
         {data && (
           <>

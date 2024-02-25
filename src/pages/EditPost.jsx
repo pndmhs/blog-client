@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { updatePost } from "../api/api";
+import Loading from "../components/Loading";
 import PostForm from "../components/PostForm";
 
 const EditPost = () => {
@@ -47,7 +48,6 @@ const EditPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem("user"));
     try {
       const newData = {
         title: he.decode(title),
@@ -66,7 +66,7 @@ const EditPost = () => {
     <main className="w-full px-5">
       <div className="w-full max-w-[820px] mx-auto py-8">
         <h2 className="text-4xl font-semibold mb-7">Edit Post</h2>
-        {loading && <p>Loading post data...</p>}
+        {loading && <Loading text="Loading post data" />}
         {error && <p>{error}</p>}
         {title && (
           <PostForm

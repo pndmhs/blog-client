@@ -8,6 +8,7 @@ import EditIcon from "../assets/edit.svg?react";
 import Comments from "../components/Comments";
 import DeleteModal from "../components/DeleteModal";
 import DeletePostButton from "../components/DeletePostButton";
+import Loading from "../components/Loading";
 import PublishButton from "../components/PublishButton";
 import PublishModal from "../components/PublishModal";
 import { AuthContext } from "../context/AuthContext";
@@ -51,7 +52,7 @@ const PostDetail = () => {
   return (
     <main className="w-full px-5">
       <div className="w-full max-w-[820px] mx-auto py-8">
-        {loading && <p>Loading...</p>}
+        {loading && <Loading text="Loading post" />}
         {error && <h2 className="font-semibold text-3xl">{error}</h2>}
         {data && (
           <>
