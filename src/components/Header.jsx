@@ -14,12 +14,18 @@ const Header = () => {
         </h1>
         <nav>
           {authed ? (
-            <button className="font-medium cursor-pointer" onClick={logout}>
+            <button
+              className="font-medium bg-gray-900 text-white py-2 px-3 rounded-md hover:bg-gray-700"
+              onClick={logout}
+            >
               Log Out
             </button>
           ) : (
-            <Link to="/login" className="font-medium">
-              Login
+            <Link
+              to="/login"
+              className="font-medium bg-gray-900 text-white py-2 px-3 rounded-md hover:bg-gray-700"
+            >
+              Log in
             </Link>
           )}
         </nav>
