@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+
+import { addComment } from "../api/api";
 
 const CommentForm = ({ comments, setComments }) => {
   const defaultFormValue = { username: "", text: "" };
@@ -15,11 +16,8 @@ const CommentForm = ({ comments, setComments }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `https://blog-api-pndmhs.koyeb.app/posts/${post_id}/comments`,
-        formData
-      );
-      setComments([...comments, response.data]);
+      const data = await addComment(post_id, formData);
+      setComments([...comments, data]);
       setFormData(defaultFormValue);
     } catch (err) {
       console.log(err.message);
