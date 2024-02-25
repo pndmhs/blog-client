@@ -37,7 +37,10 @@ const PostsList = () => {
         <div className="flex items-center">
           <h2 className="text-4xl font-semibold">Posts</h2>
           {authed && (
-            <Link to="/posts/new" className="ml-auto">
+            <Link
+              to="/posts/new"
+              className="ml-auto hover:bg-gray-100 px-2 py-1 rounded-md"
+            >
               + New Post
             </Link>
           )}
