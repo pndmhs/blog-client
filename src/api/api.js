@@ -55,6 +55,15 @@ export const deletePost = async (post_id) => {
   });
 };
 
+export const addComment = async (post_id, formData) => {
+  const response = await axios.post(
+    `${API_URL}/posts/${post_id}/comments`,
+    formData,
+  );
+
+  return response.data;
+};
+
 export const deleteComment = async (post_id, comment_id) => {
   const user = getUserData();
   await axios.delete(`${API_URL}/posts/${post_id}/comments/${comment_id}`, {
