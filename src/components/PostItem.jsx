@@ -21,7 +21,7 @@ const PostItem = ({ data }) => {
         ellipsis="..."
         trimRight
         basedOn="words"
-        className="font-merriweather text-sm opacity-80"
+        className="font-merriweather text-sm opacity-80 leading-relaxed"
       />
       <p className="text-yellow-900 text-sm">{formatDate(data.created_at)}</p>
     </div>

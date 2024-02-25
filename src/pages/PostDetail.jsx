@@ -86,7 +86,9 @@ const PostDetail = () => {
                 .split("\n")
                 .filter((par) => par !== "")
                 .map((par, index) => (
-                  <p key={index}>{he.decode(par)}</p>
+                  <p className="leading-7" key={index}>
+                    {he.decode(par)}
+                  </p>
                 ))}
             </div>
             <hr />
