@@ -4,7 +4,7 @@ import UnpublishIcon from "../assets/unpublish.svg?react";
 const PublishButton = ({ published, handlePublishToggle }) => {
   return (
     <button
-      className="flex gap-2 px-3 py-2 text-white bg-gray-900 cursor-pointer rounded-md"
+      className="flex gap-2 px-3 py-2 text-white bg-gray-900 rounded-md"
       onClick={handlePublishToggle}
     >
       {!published ? (
